@@ -621,7 +621,7 @@ server.prompt(
 
 
 // CAMBIO 2: Se ha cambiado 'StdioServerTransport' por 'HttpServerTransport' y se le ha añadido el puerto.
-const transport = new HttpServerTransport({ port: 3000 });
+const transport = new HttpServerTransport({ port: 3000, host: '0.0.0.0' });
 server.connect(transport).catch(err => {
   console.error("Failed to start MCP server:", err);
   process.exit(1);
