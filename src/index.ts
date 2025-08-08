@@ -1,6 +1,6 @@
 // CAMBIO: Se ha cambiado 'StdioServerTransport' por 'HttpServerTransport'
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
-import { HttpServerTransport } from "@modelcontextprotocol/sdk/server/http.js";
+import { HttpServerTransport } from "@modelcontext/server";
 import { z } from "zod";
 import * as pipedrive from "pipedrive";
 import * as dotenv from 'dotenv';
