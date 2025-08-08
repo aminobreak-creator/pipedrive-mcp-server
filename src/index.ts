@@ -1,5 +1,6 @@
+// CAMBIO: Se ha cambiado 'StdioServerTransport' por 'HttpServerTransport'
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
-import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
+import { HttpServerTransport } from "@modelcontextprotocol/sdk/server/http.js";
 import { z } from "zod";
 import * as pipedrive from "pipedrive";
 import * as dotenv from 'dotenv';
@@ -619,11 +620,12 @@ server.prompt(
   })
 );
 
-// Start the server with stdio transport
-const transport = new StdioServerTransport();
+// CAMBIO: Se ha cambiado 'StdioServerTransport' por 'HttpServerTransport' y se le ha añadido el puerto.
+const transport = new HttpServerTransport({ port: 3000 });
 server.connect(transport).catch(err => {
   console.error("Failed to start MCP server:", err);
   process.exit(1);
 });
 
-console.error("Pipedrive MCP Server started");
+// CAMBIO: Se ha cambiado el mensaje de log para reflejar que es un servidor HTTP.
+console.log("Pipedrive MCP HTTP Server started on port 3000");
