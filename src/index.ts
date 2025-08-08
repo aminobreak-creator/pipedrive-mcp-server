@@ -1,5 +1,5 @@
-// CAMBIO 1: La ruta de importación correcta para AMBOS transportes
-import { McpServer, StdioServerTransport, HttpServerTransport } from "@modelcontextprotocol/sdk/server";
+// CAMBIO 1: La ruta de importación correcta para TODAS las herramientas del SDK
+import { McpServer, HttpServerTransport } from "@modelcontextprotocol/sdk";
 import { z } from "zod";
 import * as pipedrive from "pipedrive";
 import * as dotenv from 'dotenv';
@@ -64,7 +64,7 @@ const server = new McpServer({
 });
 
 // === TOOLS (Todo el código de las herramientas se queda igual) ===
-// ... (No es necesario pegar todo de nuevo, solo asegúrate de que no se borre)
+// ... (El resto del archivo no cambia)
 // Get all deals
 server.tool(
   "get-deals",
@@ -490,7 +490,7 @@ server.tool(
 );
 
 // === PROMPTS (Todo el código de los prompts se queda igual) ===
-// ... (No es necesario pegar todo de nuevo, solo asegúrate de que no se borre)
+// ... (El resto del archivo no cambia)
 // Prompt for getting all deals
 server.prompt(
   "list-all-deals",
@@ -620,12 +620,12 @@ server.prompt(
 );
 
 
-// CAMBIO 2: Se ha cambiado 'StdioServerTransport' por 'HttpServerTransport' y se le ha añadido el puerto.
+// CAMBIO 2: Usar HttpServerTransport con el puerto y el host correctos
 const transport = new HttpServerTransport({ port: 3000, host: '0.0.0.0' });
 server.connect(transport).catch(err => {
   console.error("Failed to start MCP server:", err);
   process.exit(1);
 });
 
-// CAMBIO 3: Se ha cambiado el mensaje de log para reflejar que es un servidor HTTP.
+// CAMBIO 3: Mensaje de log actualizado
 console.log("Pipedrive MCP HTTP Server started on port 3000");
